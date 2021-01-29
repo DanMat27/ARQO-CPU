@@ -1,0 +1,22 @@
+Grupo 1363
+Pareja: DanMat27 y FPS
+
+En el fichero "procesador_segmentado.vhd" se encuentra el código del procesador segmentado con los nuevos componentes
+de adelantamiento y predicción de errores. En el fichero "programa.asm" tenemos las instrucciones de salto pedidas en 
+el segundo ejercicio de esta práctica (pero no hemos modificado el código vhdl correspondiente a esta parte de la 
+práctica, ya que no supimos solucionar los riesgos de salto, por lo que los saltos realmente no tienen en cuenta las 
+intrucciones anteriores). 
+
+Además, para la solución de lectura y escritura del mismo recurso en el banco de registros en el mismo ciclo, hemos 
+decidido cambiar en el banco de registros que la escritura de un registro se realice en el flanco de bajada. Lo cual 
+permite que la lectura sea del registro escrito medio ciclo antes en esa misma etapa. 
+
+También, hemos modificado la arquitectura de los saltos en el procesador para que el calculo y la decision de si se
+realiza o no, se hagan en la etapa ID. Esto es, tenemos un comparador de los registros leidos del banco de registros,
+en vez de esperar hasta la Z de la ALU y la misma AND con el branch se encuentra también en esta etapa. Con esto, no 
+hay ciclos de penalización.
+
+Los ficheros de instrucciones con un 1 son los correspondientes al programa.asm que se nos proporcionaba en moodle para 
+probar el procesador segmentado en la primera parte de la práctica. Los que no tienen número son los correspondientes al
+programa asm que hemos creado con los saltos efectivos y no efectivos. Estos ficheros fueron generados con la herramienta
+assembler de windows que se nos ha proporcionado, ejecutando el script arqo_bat sobre cada fichero programa.asm.
